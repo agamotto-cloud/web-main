@@ -1,0 +1,111 @@
+ 
+ body{
+  margin: 0;
+ }
+ 
+ .main-right-body{
+  transition: margin-left 0.5s ;
+  margin-left: 200px;
+ }
+ /*侧边栏收起的样式*/
+ .main-right-body.collapsed{
+  margin-left: 60px;
+
+ }
+
+
+ .main-nav{
+  margin-left: 200px;
+  position: fixed;
+  top:0
+ }
+
+ /* 按钮的基本样式 */
+ .nav-button {
+  width: 30px; height: 30px; 
+  padding: 0;
+ 
+  background-color: #4CAF50;
+  
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  
+}
+.rotate-text {
+  
+  transform: rotate(90deg);
+}
+
+
+/* 当鼠标悬停在按钮上方时，按钮颜色变暗 */
+.nav-button:hover {
+  background-color: #3e8e41;
+}
+
+/* 当按钮被点击时，按钮颜色更加变暗 */
+.nav-button:active {
+  background-color: #2e6f33;
+}
+
+
+
+
+
+
+
+
+
+
+
+ /* 定义侧边栏样式 */
+ .sidebar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  transition: width 0.5s ;
+  overflow: hidden;
+}
+
+/* 定义菜单项样式 */
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* 定义子菜单项样式 */
+.sub-menu {
+  display: none;
+}
+
+/* 当鼠标悬停在菜单项上时的样式 */
+.sidebar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* 当侧边栏处于折叠状态时的样式 */
+.sidebar.collapsed {
+  width: 60px;
+}
+
+/* 当侧边栏处于折叠状态时的菜单项样式 */
+.sidebar.collapsed a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* 当侧边栏处于折叠状态时的子菜单项样式 */
+.sidebar.collapsed .sub-menu {
+  display: none;
+}
+
