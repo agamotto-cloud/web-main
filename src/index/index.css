@@ -23,6 +23,7 @@
    margin-left: 300px;
    position: fixed;
    top: 0;
+   z-index: 1;
    height: 30px;
    width: 100%;
    background-color: white;
@@ -100,10 +101,13 @@
  .sidebar .sidebar-menu {
    position: fixed;
    top: 200px;
-   width: 70px;
+   width: 300px;
+   transition: width 0.5s;
    height: calc(100vh - 200px);
  }
-
+ .collapsed .sidebar-menu {
+  width: 70px;
+}
 
 
  #main-menu::-webkit-scrollbar {
