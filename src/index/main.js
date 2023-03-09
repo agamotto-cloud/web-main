@@ -83,6 +83,10 @@ function addMenu(menuUl, item) {
   newLi.appendChild(a);
   menuUl.appendChild(newLi);
   if (item.child && item.child.length > 1) {
+    var i = document.createElement('i');
+    i.classList="icons"
+    i.innerHTML= "chevron_left"
+    a.appendChild(i);
     newLi.menuHeight = ((item.child.length+1) * 50) ;
     let childMenuRoot = document.createElement("ul")
     newLi.appendChild(childMenuRoot);

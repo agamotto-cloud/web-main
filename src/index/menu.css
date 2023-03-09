@@ -37,11 +37,26 @@
 
 .sidebar-menu li.open {
     transition: all 0.5s ease-out;
-
     color: #1677ff;
     background-color: #e6f4ff;
 }
+.sidebar-menu li.open >a>.icons {
+    transform: rotate(-90deg);
+}
+
 
 .sidebar-menu li.hover {
     background-color: rgba(0, 0, 0, .06);
+}
+
+
+.sidebar-menu li>a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+
+    padding-right: 10px;
+
+
 }
