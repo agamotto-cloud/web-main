@@ -23,7 +23,7 @@
 
 .sidebar-menu li {
     height: 50px;
-    transition: height 0.5s ease;
+    transition: all 0.5s ease;
     overflow: hidden;
     padding-left: 15px;
 }
@@ -36,6 +36,7 @@
 }
 
 .sidebar-menu li.open {
+    transition: all 0.5s ease-out;
 
     color: #1677ff;
     background-color: #e6f4ff;

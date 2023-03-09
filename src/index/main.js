@@ -53,9 +53,12 @@ function addMenu(menuUl, item) {
     }
     
     let parentLis = []
+    let heightSTack =[]
     menuLi.forEach(item => {
       if (item.contains(a) && item !=newLi) {
         parentLis.push(item)
+        heightSTack = heightSTack.map(h=>h+(item.menuHeight-50));
+        heightSTack.push(item.menuHeight)
         return;
       }
       item.classList.remove('open');
@@ -64,7 +67,6 @@ function addMenu(menuUl, item) {
     newLi.classList.add("open")
     if (item.child) {
       newLi.style.height = ((item.child.length+1) * 50) + 'px';
-      newLi.menuHeight = ((item.child.length+1) * 50) ;
       if (parentLis) {
         parentLis.forEach(p => {
           p.style.height = (p.menuHeight + (item.child.length) * 50) + 'px';
@@ -72,19 +74,23 @@ function addMenu(menuUl, item) {
       }
     }else{
       //点击展开的是没有子集的，
-      parentLis.forEach(p => {
-        p.style.height = p.menuHeight  + 'px';
-      })
+      console.log(heightSTack)
+       parentLis.forEach((p,index) => {
+         p.style.height = heightSTack[index]  + 'px';
+       })
     }
   })
   newLi.appendChild(a);
   menuUl.appendChild(newLi);
   if (item.child && item.child.length > 1) {
+    newLi.menuHeight = ((item.child.length+1) * 50) ;
     let childMenuRoot = document.createElement("ul")
     newLi.appendChild(childMenuRoot);
     item.child.forEach(menu => {
       addMenu(childMenuRoot, menu);
     })
+  }else{
+    newLi.menuHeight =50 ;
   }
 }
 
@@ -104,10 +110,27 @@ var menuData = [
           { path: '#home', name: '首页4-2-2' },
         ]
       },
-      { path: '#home', name: '首页4-3' },
+      { path: '#home', name: '首页4-3',child: [
+        { path: '#home', name: '首页4-3-1' },
+        { path: '#home', name: '首页4-3-2' },
+      ] },
+      { path: '#home', name: '首页4-4' },
     ]
   },
-  { path: '#home', name: '首页5' },
+  { path: '#home', name: '首页5', child: [
+    { path: '#home', name: '首页4-1' },
+    {
+      path: '#home', name: '首页4-2', child: [
+        { path: '#home', name: '首页4-2-1' },
+        { path: '#home', name: '首页4-2-2' },
+      ]
+    },
+    { path: '#home', name: '首页4-3',child: [
+      { path: '#home', name: '首页4-3-1' },
+      { path: '#home', name: '首页4-3-2' },
+    ] },
+    { path: '#home', name: '首页4-4' },
+  ] },
   { path: '#home', name: '首页6' },
   { path: '#home', name: '首页6' },
   { path: '#home', name: '首页6' },
