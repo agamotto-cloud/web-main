@@ -1,0 +1,46 @@
+.sidebar-menu {
+
+    height: 100%;
+    overflow-y: auto;
+
+}
+
+.sidebar-menu::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+
+}
+
+.sidebar-menu li>a {
+    height: 50px;
+    padding: 0;
+}
+
+.sidebar-menu li {
+    height: 50px;
+    transition: height 0.5s ease;
+    overflow: hidden;
+    padding-left: 15px;
+}
+
+
+
+.sidebar-menu li.open>ul {
+    display: block;
+    height: auto;
+}
+
+.sidebar-menu li.open {
+
+    color: #1677ff;
+    background-color: #e6f4ff;
+}
+
+.sidebar-menu li.hover {
+    background-color: rgba(0, 0, 0, .06);
+}

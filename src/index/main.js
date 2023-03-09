@@ -1,6 +1,7 @@
 
 import './index.css'
 
+import './menu.css'
 
 //定义收起左侧的样子
 const sidebar = document.querySelector(".sidebar");
@@ -40,32 +41,90 @@ navigator.mediaDevices.getUserMedia({ video: true })
 const menu = document.getElementById("main-menu");
 
 var menuLi = [];
-function addMenu(menuUl,item){
+function addMenu(menuUl, item) {
   var newLi = document.createElement("li");
   menuLi.push(newLi)
   var a = document.createElement('a');
   a.href = item.path
   a.innerHTML = item.name;
-  newLi.addEventListener("click",()=>{
+  a.addEventListener("click", (e) => {
+    if (newLi.classList.contains("open")) {
+      return;
+    }
+    
+    let parentLis = []
     menuLi.forEach(item => {
-      item.classList.remove('active');
+      if (item.contains(a) && item !=newLi) {
+        parentLis.push(item)
+        return;
+      }
+      item.classList.remove('open');
+      item.style.height = ""
     });
-    newLi.classList.add("active")
+    newLi.classList.add("open")
+    if (item.child) {
+      newLi.style.height = ((item.child.length+1) * 50) + 'px';
+      newLi.menuHeight = ((item.child.length+1) * 50) ;
+      if (parentLis) {
+        parentLis.forEach(p => {
+          p.style.height = (p.menuHeight + (item.child.length) * 50) + 'px';
+        })
+      }
+    }else{
+      //点击展开的是没有子集的，
+      parentLis.forEach(p => {
+        p.style.height = p.menuHeight  + 'px';
+      })
+    }
   })
-  newLi.appendChild(a)
+  newLi.appendChild(a);
   menuUl.appendChild(newLi);
+  if (item.child && item.child.length > 1) {
+    let childMenuRoot = document.createElement("ul")
+    newLi.appendChild(childMenuRoot);
+    item.child.forEach(menu => {
+      addMenu(childMenuRoot, menu);
+    })
+  }
 }
 
-var newDiv = document.createElement("ul")
-menu.appendChild(newDiv);
-for (let i = 0; i < 30; i++) {
 
-  addMenu(newDiv,{path:'#home',name:'首页'})
-  // var newDiv = document.createElement("div");
-  // var a = document.createElement('a');
-  // a.href = "#home" + i
-  // a.innerHTML = "home" + i;
-  // newDiv.appendChild(a)
-  // menu.appendChild(newDiv);
 
-}
+var menuData = [
+  { path: '#home', name: '首页' },
+  { path: '#home', name: '首页1' },
+  { path: '#home', name: '首页2' },
+  { path: '#home', name: '首页3' },
+  {
+    path: '#home', name: '首页4', child: [
+      { path: '#home', name: '首页4-1' },
+      {
+        path: '#home', name: '首页4-2', child: [
+          { path: '#home', name: '首页4-2-1' },
+          { path: '#home', name: '首页4-2-2' },
+        ]
+      },
+      { path: '#home', name: '首页4-3' },
+    ]
+  },
+  { path: '#home', name: '首页5' },
+  { path: '#home', name: '首页6' },
+  { path: '#home', name: '首页6' },
+  { path: '#home', name: '首页6' },
+  { path: '#home', name: '首页6' },
+  { path: '#home', name: '首页6' },
+  { path: '#home', name: '首页6' },
+  { path: '#home', name: '首页6' },
+  { path: '#home', name: '首页6' },
+  { path: '#home', name: '首页6' },
+  { path: '#home', name: '首页6' },
+  { path: '#home', name: '首页6' }, { path: '#home', name: '首页6' },
+]
+
+var menuRoot = document.createElement("ul")
+
+menu.appendChild(menuRoot);
+
+menuData.forEach(menu => {
+  addMenu(menuRoot, menu);
+})
