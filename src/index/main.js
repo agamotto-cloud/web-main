@@ -2,17 +2,29 @@
 import './index.css'
 import './menu.css'
 import './nav.css'
+document.documentElement.classList.add('no-transition');
 
 //定义收起左侧的样子
 const sidebar = document.querySelector(".sidebar");
 const toggleBtn = document.querySelector(".toggle-sidebar");
 const mainBodyAll = document.querySelectorAll(".main-right-body");
+const menu = document.getElementById("main-menu");
 
+var menuLi = [];
+var menuMap = {}
 
 toggleBtn.addEventListener("click", function () {
   mainBodyAll.forEach(e => e.classList.toggle("collapsed"))
   sidebar.classList.toggle("collapsed");
   toggleBtn.classList.toggle('rotate-text');
+  if(sidebar.classList.contains("collapsed")){
+    menuLi.forEach(item => {
+      item.classList.remove('open');
+      item.style.height = ""
+    });
+  }else{
+    openMenu()
+  }
 });
 
 // 
@@ -38,9 +50,7 @@ navigator.mediaDevices.getUserMedia({ video: true })
 
 
 
-const menu = document.getElementById("main-menu");
 
-var menuLi = [];
 function addMenu(menuUl, item) {
   var newLi = document.createElement("li");
   menuLi.push(newLi)
@@ -49,6 +59,7 @@ function addMenu(menuUl, item) {
   menuUl.appendChild(newLi);
   a.addEventListener("click", (e) => {
     if (newLi.classList.contains("open")) {
+      //已经是打开状态，需要收起
       newLi.classList.remove('open');
       newLi.style.height = ""
       setParentHeight(newLi, 50 - newLi.menuHeight)
@@ -61,12 +72,13 @@ function addMenu(menuUl, item) {
       item.classList.remove('open');
       item.style.height = ""
     });
+    //逐级打开
     newLi.classList.add("open")
     setParentHeight(newLi, 0)
   })
   if (item.child && item.child.length > 0) {
     var i = document.createElement('i');
-    i.classList = "icons"
+    i.classList = "icons info"
     i.innerHTML = "chevron_left"
     a.appendChild(i);
     newLi.menuHeight = ((item.child.length + 1) * 50);
@@ -76,18 +88,25 @@ function addMenu(menuUl, item) {
       addMenu(childMenuRoot, menu);
     })
   } else {
+    menuMap[item.path] = newLi;
     newLi.menuHeight = 50;
   }
 }
 function createLiA(menu) {
   let a = document.createElement('a');
-  let icon = document.createElement('i');
+
+  let icon = document.createElement('span');
   let name = document.createElement('span');
+  let title = document.createElement('span');
+  title.classList = "menu-title info"
+  title.innerHTML =  menu.name
   icon.innerHTML = "home"
   icon.classList = "icons"
-  a.href = menu.path
+  if (!menu.child) {
+    a.href = menu.path
+  }
   name.appendChild(icon);
-  name.insertAdjacentHTML('beforeend',menu.name);
+  name.appendChild(title);
   a.appendChild(name)
   return a;
 }
@@ -106,28 +125,29 @@ function setParentHeight(li, childHeight) {
 
 
 
+
 var menuData = [
-  { path: '#home', name: '首页' },
-  { path: '#home', name: '首页1' },
-  { path: '#home', name: '首页2' },
-  { path: '#home', name: '首页3' },
+  { path: '/home1', name: '首页' },
+  { path: '/home2', name: '首页1' },
+  { path: '/home3', name: '首页2' },
+  { path: '/#home', name: '首页3' },
   {
-    path: '#home', name: '首页4', child: [
-      { path: '#home', name: '首页4-1' },
+    path: '/#home', name: '首页4', child: [
+      { path: '/#home', name: '首页4-1' },
       {
-        path: '#home', name: '首页4-2', child: [
-          { path: '#home', name: '首页4-2-1' },
+        path: '/#home', name: '首页4-2', child: [
+          { path: '/#home4-2-1', name: '首页4-2-1' },
           {
-            path: '#home', name: '首页4-2-2', child: [
-              { path: '#home', name: '首页4-2-2-1' },
+            path: '/#home4-2-2', name: '首页4-2-2', child: [
+              { path: '/#home4-2-2-1', name: '首页4-2-2-1' },
             ]
           },
         ]
       },
       {
-        path: '#home', name: '首页4-3', child: [
-          { path: '#home', name: '首页4-3-1' },
-          { path: '#home', name: '首页4-3-2' },
+        path: '/#home4-3', name: '首页4-3', child: [
+          { path: '/#home4-3-1', name: '首页4-3-1' },
+          { path: '/#home4-3-2', name: '首页4-3-2' },
         ]
       },
       { path: '#home', name: '首页4-4' },
@@ -170,4 +190,34 @@ menu.appendChild(menuRoot);
 
 menuData.forEach(menu => {
   addMenu(menuRoot, menu);
-})
+});
+
+
+function openMenu() {
+  let thisMenuLi = menuMap[location.pathname + location.hash];
+  console.log("打开菜单",thisMenuLi)
+  if (thisMenuLi && !thisMenuLi.classList.contains("active")) {
+    for (var key in menuMap) {
+      menuMap[key].classList.remove("active")
+    }
+    thisMenuLi.classList.add("active")
+    
+    let currentElement = thisMenuLi.parentElement;
+    while (currentElement !== null) {
+      if (currentElement.tagName === 'LI') {
+        currentElement.classList.add("open")
+      }
+      currentElement = currentElement.parentElement;
+    }
+    setParentHeight(thisMenuLi, 0)
+  }
+}
+window.onhashchange = () => {
+  openMenu()
+}
+openMenu();
+
+
+window.onload = () => {
+  document.documentElement.classList.remove('no-transition');
+}

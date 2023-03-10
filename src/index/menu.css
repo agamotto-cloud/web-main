@@ -19,7 +19,7 @@
 .sidebar-menu li>a {
     height: 50px;
     padding: 0;
-    text-align:center;
+    text-align: center;
 }
 
 .sidebar-menu li {
@@ -27,10 +27,20 @@
     transition: all 0.5s ease;
     overflow: hidden;
     padding-left: 10px;
-    
+
 }
 
+.sidebar-menu li>a>span {
+    display: flex;
+    align-items: center;
+}
 
+.sidebar-menu li>a>span>i {
+    margin-right: 5px;
+}
+.sidebar-menu  .menu-title {
+    margin-left: 5px;
+}
 
 .sidebar-menu li.open>ul {
     display: block;
@@ -39,27 +49,66 @@
 
 .sidebar-menu li.open {
     transition: all 0.5s ease-out;
+    border-radius: 1%;
+    background-color: rgb(233, 240, 244);
 }
-.sidebar-menu li.open >a>.icons {
+
+.sidebar-menu li.open>a>.icons {
     transform: rotate(-90deg);
 }
 
 
-.sidebar-menu li.hover {
-    background-color: rgba(0, 0, 0, .06);
+
+
+.sidebar-menu li.active>a {
+    color: rgb(64, 158, 255) !important;
+
 }
 
 
+
+/* 当鼠标悬停在菜单项上时的样式 */
+.sidebar-menu li:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+
 .sidebar-menu li>a {
+    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
     text-align: left;
     padding-right: 10px;
     color: black;
-    padding-left: 20px;
+    padding-left: 10px;
     margin-right: 10px;
     border-radius: 20px;
+    cursor: pointer;
 }
 
+.sidebar .sidebar-menu {
+    position: fixed;
+    top: 65px;
+    width: 300px;
 
+    transition: width 0.5s;
+
+    height: calc(100vh - 65px);
+}
+
+.collapsed .sidebar-menu {
+    width: 70px;
+    transition: width 0s;
+}
+
+.sidebar-menu li .info {
+    width: 300px;
+
+}
+.collapsed .sidebar-menu li .info {
+    display: none;
+
+}

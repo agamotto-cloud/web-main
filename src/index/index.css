@@ -82,20 +82,6 @@
  }
 
 
- .sidebar .sidebar-menu {
-   position: fixed;
-   top: 65px;
-   width: 300px;
-   transition: width 0.5s;
-   height: calc(100vh - 65px);
-
-
- }
-
- .collapsed .sidebar-menu {
-   width: 70px;
- }
-
 
 
 
@@ -117,38 +103,14 @@
 
 
 
-
- /* 定义菜单项样式 */
- .sidebar a {
-   display: block;
-   padding: 16px;
-   text-decoration: none;
- }
-
-
- /* 当鼠标悬停在菜单项上时的样式 */
- .sidebar a:hover {
-   background-color: #ddd;
-   color: black;
- }
-
  /* 当侧边栏处于折叠状态时的样式 */
  .sidebar.collapsed {
    width: 70px;
  }
 
- /* 当侧边栏处于折叠状态时的菜单项样式 */
- .sidebar.collapsed a {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   width: 100%;
- }
 
- /* 当侧边栏处于折叠状态时的子菜单项样式 */
- .sidebar.collapsed .sub-menu {
-   display: none;
- }
+
+
 
 
  /**
@@ -176,4 +138,9 @@ https://fonts.google.com/icons
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
+}
+
+
+.no-transition * {
+  transition: none !important;
 }
