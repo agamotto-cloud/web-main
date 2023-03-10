@@ -196,9 +196,9 @@ menuData.forEach(menu => {
 function openMenu() {
   let thisMenuLi = menuMap[location.pathname + location.hash];
   console.log("打开菜单",thisMenuLi)
-  if (thisMenuLi && !thisMenuLi.classList.contains("active")) {
+  if (thisMenuLi ) {
     for (var key in menuMap) {
-      menuMap[key].classList.remove("active")
+      menuMap[key]!= thisMenuLi && menuMap[key].classList.remove("active")
     }
     thisMenuLi.classList.add("active")
     
