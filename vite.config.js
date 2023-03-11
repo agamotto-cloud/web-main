@@ -7,6 +7,7 @@ export default defineConfig({
   server: {
     host: '0.0.0.0'
   },
+  envDir: './env',
   build: {
     modulePreload: { polyfill: false },
     manifest: true,

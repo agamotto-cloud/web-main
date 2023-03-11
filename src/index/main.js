@@ -230,3 +230,10 @@ openMenu();
 window.onload = () => {
   document.documentElement.classList.remove('no-transition');
 }
+
+
+import client from "./initAxios"
+
+window.client = client;
+
+client.get("?abc=123")
