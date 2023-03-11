@@ -103,7 +103,7 @@
 
 .collapsed .sidebar-menu {
     padding: 0;
-    width: 100vw;
+    width: unset;
     transition: width 0s;
 }
 
