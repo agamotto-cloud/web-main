@@ -17,14 +17,14 @@ toggleBtn.addEventListener("click", function () {
   mainBodyAll.forEach(e => e.classList.toggle("collapsed"))
   sidebar.classList.toggle("collapsed");
   toggleBtn.classList.toggle('rotate-text');
-  if(sidebar.classList.contains("collapsed")){
-    menuLi.forEach(item => {
-      item.classList.remove('open');
-      item.style.height = ""
-    });
-  }else{
-    openMenu()
-  }
+  // if(sidebar.classList.contains("collapsed")){
+  //   menuLi.forEach(item => {
+  //     item.classList.remove('open');
+  //     item.style.height = ""
+  //   });
+  // }else{
+  //   openMenu()
+  // }
 });
 
 // 
@@ -87,6 +87,7 @@ function addMenu(menuUl, item) {
     item.child.forEach(menu => {
       addMenu(childMenuRoot, menu);
     })
+
   } else {
     menuMap[item.path] = newLi;
     newLi.menuHeight = 50;
@@ -99,8 +100,12 @@ function createLiA(menu) {
   let name = document.createElement('span');
   let title = document.createElement('span');
   title.classList = "menu-title info"
-  title.innerHTML =  menu.name
-  icon.innerHTML = "home"
+  title.innerHTML = menu.name
+  if (menu.icon) {
+    icon.innerHTML = menu.icon
+  } else {
+    icon.innerHTML = "home"
+  }
   icon.classList = "icons"
   if (!menu.child) {
     a.href = menu.path
@@ -127,15 +132,15 @@ function setParentHeight(li, childHeight) {
 
 
 var menuData = [
-  { path: '/home1', name: '首页' },
-  { path: '/home2', name: '首页1' },
-  { path: '/home3', name: '首页2' },
-  { path: '/#home', name: '首页3' },
+  { path: '/home1', name: '首页', icon: "zoom_in" },
+  { path: '/home2', name: '首页1', icon: "reply" },
+  { path: '/home3', name: '首页2', icon: "terminal" },
+  { path: '/#home', name: '首页3', icon: "bolt" },
   {
-    path: '/#home', name: '首页4', child: [
+    path: '/#home', name: '首页4', icon: "dataset", child: [
       { path: '/#home', name: '首页4-1' },
       {
-        path: '/#home', name: '首页4-2', child: [
+        path: '/#home', name: '首页4-2', icon: "file_open", child: [
           { path: '/#home4-2-1', name: '首页4-2-1' },
           {
             path: '/#home4-2-2', name: '首页4-2-2', child: [
@@ -154,7 +159,7 @@ var menuData = [
     ]
   },
   {
-    path: '#home', name: '首页5', child: [
+    path: '#home', name: '首页5', icon: "block", child: [
       { path: '#home', name: '首页4-1' },
       {
         path: '#home', name: '首页4-2', child: [
@@ -174,13 +179,6 @@ var menuData = [
   { path: '#home', name: '首页6' },
   { path: '#home', name: '首页6' },
   { path: '#home', name: '首页6' },
-  { path: '#home', name: '首页6' },
-  { path: '#home', name: '首页6' },
-  { path: '#home', name: '首页6' },
-  { path: '#home', name: '首页6' },
-  { path: '#home', name: '首页6' },
-  { path: '#home', name: '首页6' },
-  { path: '#home', name: '首页6' },
   { path: '#home', name: '首页6' }, { path: '#home', name: '首页6' },
 ]
 
@@ -195,13 +193,13 @@ menuData.forEach(menu => {
 
 function openMenu() {
   let thisMenuLi = menuMap[location.pathname + location.hash];
-  console.log("打开菜单",thisMenuLi)
-  if (thisMenuLi ) {
+  console.log("打开菜单", thisMenuLi)
+  if (thisMenuLi) {
     for (var key in menuMap) {
-      menuMap[key]!= thisMenuLi && menuMap[key].classList.remove("active")
+      menuMap[key] != thisMenuLi && menuMap[key].classList.remove("active")
     }
     thisMenuLi.classList.add("active")
-    
+
     let currentElement = thisMenuLi.parentElement;
     while (currentElement !== null) {
       if (currentElement.tagName === 'LI') {
