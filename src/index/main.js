@@ -17,17 +17,15 @@ toggleBtn.addEventListener("click", function () {
   mainBodyAll.forEach(e => e.classList.toggle("collapsed"))
   sidebar.classList.toggle("collapsed");
   toggleBtn.classList.toggle('rotate-text');
-  // if(sidebar.classList.contains("collapsed")){
-  //   menuLi.forEach(item => {
-  //     item.classList.remove('open');
-  //     item.style.height = ""
-  //   });
-  // }else{
-  //   openMenu()
-  // }
+  window.localStorage.setItem("main.iscollapsed",sidebar.classList.contains("collapsed"))
+   
 });
+if(window.localStorage.getItem("main.iscollapsed") == 'true'){
+  mainBodyAll.forEach(e => e.classList.toggle("collapsed"))
+  sidebar.classList.toggle("collapsed");
+  toggleBtn.classList.toggle('rotate-text');
+}
 
-// 
 
 
 // 获取video元素
