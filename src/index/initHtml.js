@@ -1,6 +1,3 @@
-
-console.log(document.getElementById("main-body"))
-console.log(document.getElementById("main-body").offsetHeight)
 const sidebar = document.createElement("div");
 sidebar.classList.add("sidebar");
 
