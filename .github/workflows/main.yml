@@ -1,0 +1,21 @@
+name: 打包web,上传oss
+on:
+  push:
+    tags:
+      - v*
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Upload to Aliyun OSS
+        uses: aliyun/aliyun-cli-action@v1.0.0
+        with:
+          access-key-id: ${{ secrets.ALIYUN_OSS_ACCESS_KEY_ID }}
+          access-key-secret: ${{ secrets.ALIYUN_OSS_ACCESS_KEY_SECRET }}
+          region: oss-cn-shanghai.aliyuncs.com
+      - run: aliyun oss cp ./dist oss://agamotto-web/main -r -u
