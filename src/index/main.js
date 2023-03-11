@@ -3,6 +3,10 @@ import './index.css'
 import './menu.css'
 import './nav.css'
 document.documentElement.classList.add('no-transition');
+import './initHtml.js'
+
+
+
 
 //定义收起左侧的样子
 const sidebar = document.querySelector(".sidebar");
