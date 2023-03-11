@@ -21,10 +21,10 @@ toggleBtn.addEventListener("click", function () {
   mainBodyAll.forEach(e => e.classList.toggle("collapsed"))
   sidebar.classList.toggle("collapsed");
   toggleBtn.classList.toggle('rotate-text');
-  window.localStorage.setItem("main.iscollapsed",sidebar.classList.contains("collapsed"))
-   
+  window.localStorage.setItem("main.iscollapsed", sidebar.classList.contains("collapsed"))
+
 });
-if(window.localStorage.getItem("main.iscollapsed") == 'true'){
+if (window.localStorage.getItem("main.iscollapsed") == 'true') {
   mainBodyAll.forEach(e => e.classList.toggle("collapsed"))
   sidebar.classList.toggle("collapsed");
   toggleBtn.classList.toggle('rotate-text');
@@ -87,6 +87,7 @@ function addMenu(menuUl, item) {
     let childMenuRoot = document.createElement("ul")
     newLi.appendChild(childMenuRoot);
     item.child.forEach(menu => {
+      menu.path = item.path+menu.path
       addMenu(childMenuRoot, menu);
     })
 
@@ -135,7 +136,15 @@ function setParentHeight(li, childHeight) {
 
 var menuData = [
   { path: '/home1', name: '首页', icon: "zoom_in" },
-  { path: '/home2', name: '首页1', icon: "reply" },
+  {
+    path: '/server/',name: '服务器管理', icon: "settings", child: [
+      {path: '#statistic', name: '服务监控', icon: "query_stats"  },
+      {path: '#node', name: '服务器', icon: "dataset"  },
+      {path: '#docker', name: '容器管理', icon: "anchor"  },
+      {path: '#service', name: '服务管理', icon: "cloud_queue"  },
+
+    ]
+  },
   { path: '/home3', name: '首页2', icon: "terminal" },
   { path: '/#home', name: '首页3', icon: "bolt" },
   {
