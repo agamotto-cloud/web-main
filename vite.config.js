@@ -8,10 +8,10 @@ export default defineConfig({
     host: '0.0.0.0'
   },
   build: {
-    polyfillModulePreload:false,
+    modulePreload: { polyfill: false },
     manifest: true,
     rollupOptions: {
-      output:{
+      output: {
         entryFileNames: '[name].js',
         assetFileNames: '[name].[ext]',
 
@@ -22,4 +22,5 @@ export default defineConfig({
       },
     },
   },
+  base:"main"
 })
