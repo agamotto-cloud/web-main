@@ -234,6 +234,4 @@ window.onload = () => {
 
 import client from "./initAxios"
 
-window.client = client;
-
-client.get("?abc=123")
+window.apiClient = client;

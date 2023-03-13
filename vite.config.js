@@ -5,7 +5,12 @@ import { resolve } from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    port: 9999
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: 9999
   },
   envDir: './env',
   build: {
@@ -23,5 +28,5 @@ export default defineConfig({
       },
     },
   },
-  base:"main"
+  base: "/main/"
 })
