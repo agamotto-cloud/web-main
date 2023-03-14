@@ -82,6 +82,7 @@
    margin-top: 80px;
    margin-left: 315px;
    z-index: 200;
+   min-height: calc(100vh - 95px);
  }
 
  .collapsed.main-body {
