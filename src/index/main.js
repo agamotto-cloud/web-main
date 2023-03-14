@@ -137,18 +137,18 @@ function setParentHeight(li, childHeight) {
 var menuData = [
   { path: '/home1', name: '首页', icon: "home" },
   {
-    path: '/server/', name: '服务器管理', icon: "storage", child: [
-      { path: '#statistic', name: '服务监控', icon: "query_stats" },
-      { path: '#node', name: '服务器', icon: "dataset" },
-      { path: '#docker', name: '容器管理', icon: "anchor" },
-      { path: '#service', name: '服务管理', icon: "cloud_queue" },
-      { path: '#flow', name: '流水线', icon: "construction" },
+    path: '/server/#', name: '服务器管理', icon: "storage", child: [
+      { path: '/statistic', name: '服务监控', icon: "query_stats" },
+      { path: '/node', name: '服务器', icon: "dataset" },
+      { path: '/docker', name: '容器管理', icon: "anchor" },
+      { path: '/service', name: '服务管理', icon: "cloud_queue" },
+      { path: '/flow', name: '流水线', icon: "construction" },
 
     ]
   },
   {
-    path: '/server/', name: '系统设置', icon: "settings", child: [
-      { path: '#menu', name: '菜单', icon: "list_alt" },
+    path: '/server/#', name: '系统设置', icon: "settings", child: [
+      { path: '/menu', name: '菜单', icon: "list_alt" },
     ]
   },
   { path: '/#home', name: '首页3', icon: "bolt" },
