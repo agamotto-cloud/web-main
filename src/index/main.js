@@ -135,7 +135,7 @@ function setParentHeight(li, childHeight) {
 
 
 var menuData = [
-  { path: '/home1', name: '首页', icon: "zoom_in" },
+  { path: '/home1', name: '首页aaaaaaaaaaaaaaaaaa', icon: "zoom_in" },
   {
     path: '/server/',name: '服务器管理', icon: "settings", child: [
       {path: '#statistic', name: '服务监控', icon: "query_stats"  },

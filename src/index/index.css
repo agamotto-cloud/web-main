@@ -1,5 +1,6 @@
  body {
    margin: 0;
+   background-color: #d9e0e7 ;
  }
 
 
@@ -35,20 +36,6 @@
 }
 
  
-
-
-
-
- /* .nav-button:hover {
-   background-color: #3e8e41;
- }
-*/
- /* 当按钮被点击时，按钮颜色更加变暗 */
- /* .nav-button:active {
-   background-color: #2e6f33;
- } */
-
-
 
 
  /* 定义侧边栏样式 */
@@ -88,14 +75,17 @@
 
 
  .main-body {
-   background-color: #d9e0e7 ;
+   background-color: white ;
+   border-top-left-radius: 10px;
    padding-left: 15px;
    padding-top: 15px;
-   margin-top: 65px;
-   height: calc(100vw - 300px);
+   margin-top: 80px;
+   margin-left: 315px;
+   z-index: 200;
  }
 
  .collapsed.main-body {
+  margin-left: 85px;
    height: calc(100vw - 70px);
  }
 

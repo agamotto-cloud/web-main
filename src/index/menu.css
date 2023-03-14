@@ -20,11 +20,12 @@
     height: 50px;
     padding: 0;
     text-align: center;
+    white-space: nowrap;
 }
 
 .sidebar-menu li {
     height: 50px;
-    transition: all 0.5s ease;
+    transition: all 0.5s ;
     overflow: hidden;
     padding-left: 10px;
 
@@ -49,7 +50,7 @@
 }
 
 .sidebar-menu li.open {
-    transition: all 0.5s ease-out;
+    transition: all 0.5s ;
     border-radius: 1%;
     background-color: rgb(233, 240, 244);
 }
@@ -101,6 +102,12 @@
     height: calc(100vh - 65px);
 }
 
+.sidebar-menu>ul>li {
+    width: 300px;
+    transition: width 0.5s;
+}
+
+
 .collapsed .sidebar-menu {
     padding: 0;
     width: unset;
@@ -109,7 +116,6 @@
 
 .collapsed .sidebar-menu>ul>li {
     width: 60px;
-    transition: width 0s;
     height: 50px !important;
     
 }
@@ -149,10 +155,6 @@
 }
 
 
-
-.collapsed .sidebar-menu li .info {
-
-}
 
 
  .collapsed .sidebar-menu >ul>li>a .info {
