@@ -104,7 +104,7 @@
 
 .sidebar-menu>ul>li {
     width: 300px;
-    transition: width 0.5s;
+    transition: width 0.5s ,height 0.5s;
 }
 
 
