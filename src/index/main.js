@@ -132,23 +132,30 @@ function setParentHeight(li, childHeight) {
 }
 
 
-
+/*
+日志管理
+用户管理
+权限管理
+*/
 
 var menuData = [
   { path: '/home1', name: '首页', icon: "home" },
   {
     path: '/server/#', name: '服务器管理', icon: "storage", child: [
-      { path: '/statistic', name: '服务监控', icon: "query_stats" },
-      { path: '/node', name: '服务器', icon: "dataset" },
-      { path: '/docker', name: '容器管理', icon: "anchor" },
-      { path: '/service', name: '服务管理', icon: "cloud_queue" },
-      { path: '/flow', name: '流水线', icon: "construction" },
+      { path: '/statistic', name: '服务监控', icon: "bar_chart" },
+      { path: '/node', name: '服务器', icon: "dns" },
+      { path: '/docker', name: '容器管理', icon: "widgets" },
+      { path: '/service', name: '服务管理', icon: "cloud" },
+      { path: '/flow', name: '流水线', icon: "timeline" },
 
     ]
   },
   {
     path: '/server/#', name: '系统设置', icon: "settings", child: [
       { path: '/menu', name: '菜单', icon: "list_alt" },
+      { path: '/log',  name: '日志管理',  icon: "description"  },
+      { path: '/user', name: '用户管理', icon: "person" },
+      {  path: '/permission',  name: '权限管理',  icon: "policy"    }
     ]
   },
   { path: '/#home', name: '首页3', icon: "bolt" },

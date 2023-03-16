@@ -1,6 +1,6 @@
  body {
    margin: 0;
-   background-color: #d9e0e7 ;
+   background-color: #d9e0e7;
  }
 
 
@@ -31,11 +31,12 @@
    transition: width 0.5s, margin-left 0.5s;
    border-bottom: 1px solid rgba(0, 0, 0, 0.1625);
  }
- .main-nav.collapsed {
-  width: calc(100% - 71px);
-}
 
- 
+ .main-nav.collapsed {
+   width: calc(100% - 71px);
+ }
+
+
 
 
  /* 定义侧边栏样式 */
@@ -75,18 +76,19 @@
 
 
  .main-body {
-   background-color: white ;
+   background-color: white;
    border-top-left-radius: 10px;
    padding-left: 15px;
    padding-top: 15px;
    margin-top: 80px;
    margin-left: 315px;
    z-index: 200;
-   min-height: calc(100vh - 95px);
+   height: calc(100vh - 95px);
+   overflow-y: auto;
  }
 
  .collapsed.main-body {
-  margin-left: 85px;
+   margin-left: 85px;
    height: calc(100vw - 70px);
  }
 
@@ -107,31 +109,31 @@
  /**
 https://fonts.google.com/icons
 **/
-/* fallback */
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url("../font/icon.woff2") format('woff2');
-}
+ /* fallback */
+ @font-face {
+   font-family: 'Material Icons';
+   font-style: normal;
+   font-weight: 400;
+   src: url("../font/icon.woff2") format('woff2');
+ }
 
-.icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
+ .icons {
+   font-family: 'Material Icons';
+   font-weight: normal;
+   font-style: normal;
+   font-size: 24px;
+   line-height: 1;
+   letter-spacing: normal;
+   text-transform: none;
+   display: inline-block;
+   white-space: nowrap;
+   word-wrap: normal;
+   direction: ltr;
+   -webkit-font-feature-settings: 'liga';
+   -webkit-font-smoothing: antialiased;
+ }
 
 
-.no-transition * {
-  transition: none !important;
-}
+ .no-transition * {
+   transition: none !important;
+ }
