@@ -32,25 +32,6 @@ if (window.localStorage.getItem("main.iscollapsed") == 'true') {
 
 
 
-// 获取video元素
-const video = document.querySelector('video');
-
-// 请求用户授权访问摄像头
-navigator.mediaDevices.getUserMedia({ video: true })
-  .then(stream => {
-    // 将视频流绑定到video元素
-    video.srcObject = stream;
-    video.play();
-  })
-  .catch(error => {
-    console.log('获取摄像头画面失败:', error);
-  });
-
-
-
-
-
-
 
 
 function addMenu(menuUl, item) {
