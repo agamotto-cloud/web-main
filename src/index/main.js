@@ -4,7 +4,7 @@ import './menu.css'
 import './nav.css'
 document.documentElement.classList.add('no-transition');
 import './initHtml.js'
-
+import '../page/error.js'
 
 
 
@@ -228,25 +228,3 @@ window.onload = () => {
 import client from "./initAxios"
 
 window.apiClient = client;
-
-
-
-/**
- * 页面得预加载，在跳转不同子域时使用
- * 
- * <a href="target.html" onclick="preLoad(event)">跳转到目标页面</a>
-
-<iframe id="preloader" style="display:none;"></iframe>
-
-<script>
-function preLoad(event) {
-  event.preventDefault(); // 阻止默认的链接跳转行为
-  var preloader = document.getElementById("preloader");
-  preloader.src = event.target.href; // 设置预加载页面的URL
-  preloader.onload = function() {
-    window.location.href = event.target.href; // 当预加载完成后，跳转到目标页面
-  };
-}
-
-
- */

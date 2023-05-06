@@ -17,14 +17,11 @@ instance.interceptors.request.use(function (config) {
   return Promise.reject(error);
 });
 
-instance.interceptors.response.use(function (response) {
-//   if (response && response.data ) {
-
-//   }
-  return response;
-}, function (error) {
-  return Promise.reject(error);
-});
+// instance.interceptors.response.use(function (response) {
+//   return response;
+// }, function (error) {
+//   return Promise.reject(error);
+// });
 
 
 
