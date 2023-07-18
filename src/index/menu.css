@@ -70,8 +70,8 @@
 
 
 /* 当鼠标悬停在菜单项上时的样式 */
-.sidebar-menu li:hover {
-    background-color: #ddd;
+.sidebar-menu li:not(.open):hover  {
+    background-color: #aea8a8;
     color: black;
 }
 
