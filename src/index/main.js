@@ -134,9 +134,9 @@ var menuData = [
   {
     path: '/server/#', name: '系统设置', icon: "settings", child: [
       { path: '/menu', name: '菜单', icon: "list_alt" },
-      { path: '/log',  name: '日志管理',  icon: "description"  },
+      { path: '/log', name: '日志管理', icon: "description" },
       { path: '/user', name: '用户管理', icon: "person" },
-      {  path: '/permission',  name: '权限管理',  icon: "policy"    }
+      { path: '/permission', name: '权限管理', icon: "policy" }
     ]
   },
   { path: '/#home', name: '首页3', icon: "bolt" },
@@ -225,6 +225,3 @@ window.onload = () => {
 }
 
 
-import client from "./initAxios"
-
-window.apiClient = client;
