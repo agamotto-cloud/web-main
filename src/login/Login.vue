@@ -1,6 +1,5 @@
 <script setup >
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import WelcomeItem from './components/WelcomeItem.vue';
 import { ref } from 'vue'
 const count = ref(0)
 
@@ -13,13 +12,10 @@ function addCount(){
   <header>
     <h1 @click="addCount">{{ count }}</h1>
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+     
     </div>
   </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <WelcomeItem />
 </template>
 
 <style scoped>
