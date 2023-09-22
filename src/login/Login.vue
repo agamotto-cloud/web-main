@@ -1,48 +1,48 @@
 <script setup >
-import WelcomeItem from './components/WelcomeItem.vue';
+
 import { ref } from 'vue'
-const count = ref(0)
+import { ElForm, ElTabPane, ElCard, ElTabs, ElButton } from 'element-plus';
 
-function addCount(){
-  count.value++
+import BaseLogin from './components/BaseLogin.vue'
+import PhoneLogin from './components/PhoneLogin.vue'
+var activeName = ref("base")
+const formRef = ref()
+var loginForm = ref({})
+
+function login() {
+  console.log('login', formRef.model)
+
 }
-</script>
 
+
+
+</script>
 <template>
-  <header>
-    <h1 @click="addCount">{{ count }}</h1>
-    <div class="wrapper">
-     
-    </div>
-  </header>
-  <WelcomeItem />
+  <div class="login-container">
+    <el-card class="box-card">
+      <el-form ref="formRef" :model="loginForm" label-width="auto">
+        <el-tabs v-model="activeName" :stretch="true">
+          <el-tab-pane label="账号密码" name="base">
+            <base-login :loginForm="loginForm"></base-login>
+          </el-tab-pane>
+          <el-tab-pane label="手机号" name="phone">
+            <phone-login :loginForm="loginForm"></phone-login>
+          </el-tab-pane>
+        </el-tabs>
+        <el-button type="primary" @click="login">登录</el-button>
+      </el-form>
+    </el-card>
+
+  </div>
 </template>
 
+
 <style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
 }
 </style>
