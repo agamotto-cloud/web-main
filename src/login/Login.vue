@@ -5,12 +5,13 @@ import { ElForm, ElTabPane, ElCard, ElTabs, ElButton } from 'element-plus';
 
 import BaseLogin from './components/BaseLogin.vue'
 import PhoneLogin from './components/PhoneLogin.vue'
-var activeName = ref("base")
 const formRef = ref()
-var loginForm = ref({})
+const loginForm = ref({
+  type: "base",
+})
 
 function login() {
-  console.log('login', formRef.model)
+  console.log('login', loginForm.value)
 
 }
 
@@ -21,7 +22,7 @@ function login() {
   <div class="login-container">
     <el-card class="box-card">
       <el-form ref="formRef" :model="loginForm" label-width="auto">
-        <el-tabs v-model="activeName" :stretch="true">
+        <el-tabs v-model="loginForm.type" :stretch="true">
           <el-tab-pane label="账号密码" name="base">
             <base-login :loginForm="loginForm"></base-login>
           </el-tab-pane>
