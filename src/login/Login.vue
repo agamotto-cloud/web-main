@@ -5,6 +5,9 @@ import { ElForm, ElTabPane, ElCard, ElTabs, ElButton } from 'element-plus';
 
 import BaseLogin from './components/BaseLogin.vue'
 import PhoneLogin from './components/PhoneLogin.vue'
+import Github from './components/oauth/Github.vue'
+import Wechat from './components/oauth/Wechat.vue'
+
 const formRef = ref()
 const loginForm = ref({
   type: "base",
@@ -30,8 +33,16 @@ function login() {
             <phone-login :loginForm="loginForm"></phone-login>
           </el-tab-pane>
         </el-tabs>
-        <el-button type="primary" @click="login">登录</el-button>
+        <div style="text-align: center;">
+          <el-button type="primary" @click="login">登录</el-button>
+        </div>
       </el-form>
+      <br />
+      <hr style="margin: 20px -20px; border-width: 1px;" />
+      <div class="oath-list">
+        <github />
+        <wechat />
+      </div>
     </el-card>
 
   </div>
@@ -45,5 +56,24 @@ function login() {
   align-items: center;
   height: 100vh;
   background-size: cover;
+}
+
+.box-card {
+  width: 350px;
+}
+
+.oath-list {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.oath-list>div {
+  display: block;
+  width: 60px;
+  text-align: center;
+  padding: auto;
+
 }
 </style>
