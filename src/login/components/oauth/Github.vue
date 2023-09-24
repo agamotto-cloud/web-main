@@ -13,11 +13,14 @@
 
 
 <script setup>
+const emit = defineEmits(['logining'])
 
 function onLogin() {
     //跳转到github授权页面,
     //先获取到当前页面的url
-    const url = window.location.href;
+    //const url = window.location.href;
+    console.log(window.location)
+    var url = window.location.protocol+"//"+window.location.host + window.location.pathname +"?type=github";
 
     // 创建 URL 对象，传入基础 URL
     const oauthUrl = new URL("https://github.com/login/oauth/authorize");
@@ -26,8 +29,10 @@ function onLogin() {
     oauthUrl.searchParams.append('client_id', 'Iv1.112068afc10d9186');
     oauthUrl.searchParams.append('redirect_uri', url);
     console.log(oauthUrl.toString());
-    // 在新窗口中打开 URL
-    const newWindow = window.open(oauthUrl.toString(), '_blank');
+    emit('logining', true)
+    // 跳转到这个 URL
+    window.location.href = oauthUrl.toString();
+        
 
 }
 
