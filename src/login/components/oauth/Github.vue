@@ -20,7 +20,7 @@ function onLogin() {
     //先获取到当前页面的url
     //const url = window.location.href;
     console.log(window.location)
-    var url = window.location.protocol+"//"+window.location.host + window.location.pathname +"?type=github";
+    var url = window.location.protocol + "//" + window.location.host + window.location.pathname;
 
     // 创建 URL 对象，传入基础 URL
     const oauthUrl = new URL("https://github.com/login/oauth/authorize");
@@ -28,11 +28,13 @@ function onLogin() {
     // 设置 URL 参数
     oauthUrl.searchParams.append('client_id', 'Iv1.112068afc10d9186');
     oauthUrl.searchParams.append('redirect_uri', url);
+    oauthUrl.searchParams.append('state', 'github');
+
     console.log(oauthUrl.toString());
     emit('logining', true)
     // 跳转到这个 URL
     window.location.href = oauthUrl.toString();
-        
+
 
 }
 

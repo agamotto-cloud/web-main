@@ -1,12 +1,14 @@
 <script setup >
 
 import { ref } from 'vue'
-import { ElForm, ElTabPane, ElCard, ElTabs, ElButton,vLoading } from 'element-plus';
+import { ElForm, ElTabPane, ElCard, ElTabs, ElButton, vLoading } from 'element-plus';
 
 import BaseLogin from './components/BaseLogin.vue'
 import PhoneLogin from './components/PhoneLogin.vue'
 import Github from './components/oauth/Github.vue'
+import WrokWechat from './components/oauth/WorkWechat.vue'
 import Wechat from './components/oauth/Wechat.vue'
+
 
 const formRef = ref()
 const logiging = ref(false)
@@ -24,14 +26,14 @@ function login() {
 //获取当前url的参数,如果有type和code,则是第三方登录回调
 const url = window.location.href;
 const urlObj = new URL(url);
-const loginType = urlObj.searchParams.get('type');
+const loginType = urlObj.searchParams.get('state');
 const code = urlObj.searchParams.get('code');
 if (loginType && code) {
   console.log('第三方登录回调', loginType, code)
   //先去除url中的这俩
   window.history.replaceState({}, 0, urlObj.origin + urlObj.pathname);
   logiging.value = true;
-  console.log("登录中...",{
+  console.log("登录中...", {
     type: loginType,
     code: code
   })
@@ -40,7 +42,7 @@ if (loginType && code) {
   //window.location.href = "/#/home";
 }
 
-function logining(flag){
+function logining(flag) {
   logiging.value = flag;
 }
 
@@ -65,8 +67,9 @@ function logining(flag){
       <br />
       <hr style="margin: 20px -20px; border-width: 1px;" />
       <div class="oath-list">
-        <github @logining="logining"/>
-        <wechat @logining="logining"/>
+        <github @logining="logining" />
+        <wrok-wechat @logining="logining" />
+        <wechat @logining="logining" />
       </div>
     </el-card>
 
@@ -99,7 +102,8 @@ function logining(flag){
   width: 60px;
   text-align: center;
   padding: auto;
-  cursor: pointer; /* 添加可点击样式 */
+  cursor: pointer;
+  /* 添加可点击样式 */
 
 }
 </style>
