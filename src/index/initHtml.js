@@ -1,3 +1,8 @@
+
+
+
+const fragment = document.createDocumentFragment();
+
 const sidebar = document.createElement("div");
 sidebar.classList.add("sidebar");
 
@@ -35,5 +40,14 @@ navRight.appendChild(navRightLi);
 nav.appendChild(navLeft);
 nav.appendChild(navRight);
 const body = document.querySelector("body");
-body.appendChild(sidebar);
-body.appendChild(nav);
+
+fragment.appendChild(sidebar);
+fragment.appendChild(nav);
+body.appendChild(fragment);
+
+export {
+    sidebar,
+    nav,
+    toggleSidebar,
+    sidebarMenu
+}

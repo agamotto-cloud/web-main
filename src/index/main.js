@@ -3,16 +3,16 @@ import './index.css'
 import './menu.css'
 import './nav.css'
 document.documentElement.classList.add('no-transition');
-import './initHtml.js'
+import { sidebar, toggleSidebar, sidebarMenu, nav } from './initHtml.js'
 import '../page/error.js'
 
 
 
 //定义收起左侧的样子
-const sidebar = document.querySelector(".sidebar");
-const toggleBtn = document.querySelector(".toggle-sidebar");
-const mainBodyAll = document.querySelectorAll(".main-right-body");
-const menu = document.getElementById("main-menu");
+//const sidebar = document.querySelector(".sidebar");
+const toggleBtn = toggleSidebar;
+const mainBodyAll = nav;
+const menu = sidebarMenu;
 
 var menuLi = [];
 var menuMap = {}
@@ -188,11 +188,11 @@ var menuData = [
 
 var menuRoot = document.createElement("ul")
 
-menu.appendChild(menuRoot);
-
 menuData.forEach(menu => {
   addMenu(menuRoot, menu);
 });
+
+menu.appendChild(menuRoot);
 
 
 function openMenu() {
