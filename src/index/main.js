@@ -224,7 +224,7 @@ window.onload = async () => {
   document.documentElement.classList.remove('no-transition');
 
   const loadedModule = await import('./main-app.js')
-  loadedModule.render(nav)
+  loadedModule.renderNavRight(nav.querySelector(".nav-right"))
 }
 
 
