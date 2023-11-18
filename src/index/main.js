@@ -220,11 +220,15 @@ window.onhashchange = () => {
 openMenu();
 
 
-window.onload = async () => {
+window.onload = () => {
   document.documentElement.classList.remove('no-transition');
 
-  const loadedModule = await import('./main-app.js')
-  loadedModule.renderNavRight(nav.querySelector(".nav-right"))
-}
-
+  // import('./main-app.js')
+  //   .then((loadedModule) => {
+  //     loadedModule.renderNavRight(nav.querySelector(".nav-right"));
+  //   })
+  //   .catch((error) => {
+  //     console.error('Failed to load module:', error);
+  //   });
+};
 
