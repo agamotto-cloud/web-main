@@ -3,7 +3,7 @@ import './index.css'
 import './menu.css'
 import './nav.css'
 document.documentElement.classList.add('no-transition');
-import { sidebar, toggleSidebar, sidebarMenu, nav } from './initHtml.js'
+import { sidebar, nav,toggleSidebar, sidebarMenu  } from './initHtml.js'
 import '../page/error.js'
 
 
@@ -11,23 +11,25 @@ import '../page/error.js'
 //定义收起左侧的样子
 //const sidebar = document.querySelector(".sidebar");
 const toggleBtn = toggleSidebar;
-const mainBodyAll = nav;
 const menu = sidebarMenu;
 
 var menuLi = [];
 var menuMap = {}
-
 toggleBtn.addEventListener("click", function () {
-  mainBodyAll.forEach(e => e.classList.toggle("collapsed"))
-  sidebar.classList.toggle("collapsed");
-  toggleBtn.classList.toggle('rotate-text');
+  //mainBodyAll.forEach(e => e.classList.toggle("collapsed"))
+  document.body.classList.toggle("collapsed");
+  //sidebar.classList.toggle("collapsed");
+  //toggleBtn.classList.toggle('rotate-text');
   window.localStorage.setItem("main.iscollapsed", sidebar.classList.contains("collapsed"))
 
 });
 if (window.localStorage.getItem("main.iscollapsed") == 'true') {
-  mainBodyAll.forEach(e => e.classList.toggle("collapsed"))
-  sidebar.classList.toggle("collapsed");
-  toggleBtn.classList.toggle('rotate-text');
+  //body.classList.toggle("collapsed");
+  document.body.classList.toggle("collapsed");
+  //mainBodyAll.forEach(e => e.classList.toggle("collapsed"))
+  //nav.classList.toggle("collapsed");
+  //sidebar.classList.toggle("collapsed");
+  //toggleBtn.classList.toggle('rotate-text');
 }
 
 
@@ -219,16 +221,8 @@ window.onhashchange = () => {
 }
 openMenu();
 
+document.documentElement.classList.remove('no-transition');
 
-window.onload = () => {
-  document.documentElement.classList.remove('no-transition');
 
-  // import('./main-app.js')
-  //   .then((loadedModule) => {
-  //     loadedModule.renderNavRight(nav.querySelector(".nav-right"));
-  //   })
-  //   .catch((error) => {
-  //     console.error('Failed to load module:', error);
-  //   });
-};
-
+export default {
+}

@@ -11,12 +11,11 @@ export default defineConfig({
     federation({
       name: 'web-main',
       filename: 'web-main.js',
-      
       // 需要暴露的模块
       exposes: {
           './main': resolve(__dirname, './src/index/main.js') ,
       },
-      shared: ['vue']
+     // shared: ['vue']
   })
   ],
   server: {
@@ -28,7 +27,9 @@ export default defineConfig({
     port: 9999
   },
   envDir: './env',
+  
   build: {
+    assetsDir: '',
     target: 'esnext',
     modulePreload: { polyfill: false },
     manifest: true,
@@ -36,7 +37,6 @@ export default defineConfig({
       output: {
         entryFileNames: '[name].js',
         assetFileNames: '[name].[ext]',
-
       },
       input: {
         main: resolve(__dirname, 'index.html'),

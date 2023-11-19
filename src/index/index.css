@@ -14,10 +14,6 @@
 
  }
 
- /*侧边栏收起后右侧body的样式*/
- .main-right-body.collapsed {
-   margin-left: 71px;
- }
 
 
  .main-nav {
@@ -32,8 +28,9 @@
    border-bottom: 1px solid rgba(0, 0, 0, 0.1625);
  }
 
- .main-nav.collapsed {
+ .collapsed > .main-nav {
    width: calc(100% - 71px);
+   margin-left: 71px;
  }
 
 
@@ -65,7 +62,7 @@
    border-bottom: 1px solid rgba(0, 0, 0, 0.1625);
  }
 
- .collapsed .sidebar-info {
+ .collapsed  .sidebar-info {
    width: 70px;
  }
 
@@ -87,7 +84,7 @@
    overflow-y: auto;
  }
 
- .collapsed.main-body {
+ .collapsed > .main-body {
    margin-left: 85px;
    height: calc(100vw - 70px);
  }
@@ -97,7 +94,7 @@
 
 
  /* 当侧边栏处于折叠状态时的样式 */
- .sidebar.collapsed {
+ .collapsed > .sidebar {
    width: 70px;
  }
 
