@@ -3,7 +3,7 @@ import './index.css'
 import './menu.css'
 import './nav.css'
 document.documentElement.classList.add('no-transition');
-import { sidebar, nav,toggleSidebar, sidebarMenu  } from './initHtml.js'
+import { sidebar, nav, toggleSidebar, sidebarMenu } from './initHtml.js'
 import '../page/error.js'
 
 
@@ -221,9 +221,13 @@ window.onhashchange = () => {
 }
 openMenu();
 
-window.onload = () => {
-//  openMenu()
-document.documentElement.classList.remove('no-transition');
+//如果页面已经加载完
+if (document.readyState == "complete") {
+  document.documentElement.classList.remove('no-transition');
+} else {
+  window.onload = () => {
+    document.documentElement.classList.remove('no-transition');
+  }
 }
 
 
