@@ -106,12 +106,11 @@
  /**
 https://fonts.google.com/icons
 **/
- /* fallback */
  @font-face {
    font-family: 'Material Icons';
    font-style: normal;
    font-weight: 400;
-   src: url("../font/icon.woff2") format('woff2');
+   src: url(../font/icon.woff2) format('woff2');
  }
 
  .icons {

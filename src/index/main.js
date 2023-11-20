@@ -221,7 +221,11 @@ window.onhashchange = () => {
 }
 openMenu();
 
+window.onload = () => {
+//  openMenu()
 document.documentElement.classList.remove('no-transition');
+}
+
 
 
 export default {
