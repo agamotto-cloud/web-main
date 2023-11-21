@@ -15,7 +15,7 @@ export default defineConfig({
       exposes: {
           './main': resolve(__dirname, './src/index/main.js') ,
       },
-     // shared: ['vue']
+      shared: ['vue','element-plus']
   })
   ],
   server: {
@@ -34,10 +34,10 @@ export default defineConfig({
     modulePreload: { polyfill: false },
     manifest: true,
     rollupOptions: {
-      output: {
-        entryFileNames: '[name].js',
-        assetFileNames: '[name].[ext]',
-      },
+      // output: {
+      //   entryFileNames: '[name].js',
+      //   assetFileNames: '[name].[ext]',
+      // },
       input: {
         main: resolve(__dirname, 'index.html'),
         login: resolve(__dirname, 'login.html'),

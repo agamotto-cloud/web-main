@@ -42,7 +42,7 @@ function handleCommand(command) {
 <style scoped>
 .nav-left {
     display: flex;
-    align-items: center;
+    align-items: right;
     justify-content: flex-end;
     height: 100%;
     padding-right: 20px;

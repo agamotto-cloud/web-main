@@ -224,9 +224,19 @@ openMenu();
 //如果页面已经加载完
 if (document.readyState == "complete") {
   document.documentElement.classList.remove('no-transition');
+  setTimeout(() => {
+    import("./mainApp.js").then((res) => {
+      res.renderNavRight(nav);
+    });
+  }, 200);
 } else {
   window.onload = () => {
     document.documentElement.classList.remove('no-transition');
+    setTimeout(() => {
+      import("./mainApp.js").then((res) => {
+        res.renderNavRight(nav);
+      });
+    }, 200);
   }
 }
 
