@@ -1,4 +1,5 @@
 
+document.documentElement.classList.add('no-transition');
 
 
 const fragment = document.createDocumentFragment();
@@ -30,13 +31,8 @@ toggleSidebar.classList.add("toggle-sidebar", "icons");
 toggleSidebar.textContent = "menu";
 navLeftLi.appendChild(toggleSidebar);
 navLeft.appendChild(navLeftLi);
-const navRight = document.createElement("ul");
+const navRight = document.createElement("div");
 navRight.classList.add("nav-right");
-const navRightLi = document.createElement("li");
-const navRightSpan = document.createElement("span");
-navRightSpan.textContent = "agamotto";
-navRightLi.appendChild(navRightSpan);
-navRight.appendChild(navRightLi);
 nav.appendChild(navLeft);
 nav.appendChild(navRight);
 const body = document.querySelector("body");

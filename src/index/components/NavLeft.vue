@@ -1,18 +1,20 @@
 <template>
     <div class="nav-left">
-        <div class="user-info">
-            <img class="avatar" src="https://via.placeholder.com/150" alt="avatar" />
-            <span class="username">John Doe</span>
-            <i class="el-icon-arrow-down el-icon--right"></i>
-        </div>
         <el-dropdown trigger="click" @command="handleCommand">
             <span class="el-dropdown-link">
-                <i class="el-icon-setting">123334555555553</i>
+                <div class="user-info">
+                    <img class="avatar" src="https://via.placeholder.com/150" alt="avatar" />
+                    <span class="username">John Doe</span>
+                    <i class="el-icon-arrow-down el-icon--right"></i>
+                </div>
+                <i class="el-icon-setting"></i>
             </span>
-            <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="profile">个人信息</el-dropdown-item>
-                <el-dropdown-item command="logout">退出登录</el-dropdown-item>
-            </el-dropdown-menu>
+            <template v-slot:dropdown>
+                <el-dropdown-menu>
+                    <el-dropdown-item command="profile">个人信息</el-dropdown-item>
+                    <el-dropdown-item command="logout">退出登录</el-dropdown-item>
+                </el-dropdown-menu>
+            </template>
         </el-dropdown>
     </div>
 </template>

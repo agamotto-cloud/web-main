@@ -2,7 +2,6 @@
 import './index.css'
 import './menu.css'
 import './nav.css'
-document.documentElement.classList.add('no-transition');
 import { sidebar, nav, toggleSidebar, sidebarMenu } from './initHtml.js'
 import '../page/error.js'
 
@@ -16,20 +15,12 @@ const menu = sidebarMenu;
 var menuLi = [];
 var menuMap = {}
 toggleBtn.addEventListener("click", function () {
-  //mainBodyAll.forEach(e => e.classList.toggle("collapsed"))
   document.body.classList.toggle("collapsed");
-  //sidebar.classList.toggle("collapsed");
-  //toggleBtn.classList.toggle('rotate-text');
-  window.localStorage.setItem("main.iscollapsed", sidebar.classList.contains("collapsed"))
+  window.localStorage.setItem("main.iscollapsed",  document.body.classList.contains("collapsed"))
 
 });
-if (window.localStorage.getItem("main.iscollapsed") == 'true') {
-  //body.classList.toggle("collapsed");
+if (window.localStorage.getItem("main.iscollapsed")=="true") {
   document.body.classList.toggle("collapsed");
-  //mainBodyAll.forEach(e => e.classList.toggle("collapsed"))
-  //nav.classList.toggle("collapsed");
-  //sidebar.classList.toggle("collapsed");
-  //toggleBtn.classList.toggle('rotate-text');
 }
 
 
@@ -199,7 +190,6 @@ menu.appendChild(menuRoot);
 
 function openMenu() {
   let thisMenuLi = menuMap[location.pathname + location.hash];
-  console.log("打开菜单", thisMenuLi)
   if (thisMenuLi) {
     for (var key in menuMap) {
       menuMap[key] != thisMenuLi && menuMap[key].classList.remove("active")
@@ -223,18 +213,22 @@ openMenu();
 
 //如果页面已经加载完
 if (document.readyState == "complete") {
-  document.documentElement.classList.remove('no-transition');
+  
+  console.log("document.readyState", document.readyState)
   setTimeout(() => {
+    document.documentElement.classList.remove('no-transition');
     import("./mainApp.js").then((res) => {
-      res.renderNavRight(nav);
+      res.renderNavRight(nav.getElementsByTagName("div")[0]);
+
     });
   }, 200);
 } else {
   window.onload = () => {
     document.documentElement.classList.remove('no-transition');
+    console.log("document.readyState", document.readyState)
     setTimeout(() => {
       import("./mainApp.js").then((res) => {
-        res.renderNavRight(nav);
+        res.renderNavRight(nav.getElementsByTagName("div")[0]);
       });
     }, 200);
   }
